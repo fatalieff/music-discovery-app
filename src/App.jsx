@@ -45,7 +45,7 @@ function App() {
       // 10 saniyə qulaq asmaq tanıma ehtimalını artırır
       setTimeout(() => {
         stopRecording();
-      }, 5000);
+      }, 6000);
     } catch (err) {
       console.error("Microphone error:", err);
       setStatus("Microphone access denied!");
@@ -135,11 +135,13 @@ function App() {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-[#0f0c29]">
+    <div className="flex  items-center justify-center min-h-screen bg-[#0f0c29]">
       <header className="text-center px-4 w-full">
         {!result ? (
           <div className="home-container">
-            <h1 className="text-4xl font-bold text-white mb-8 home-title">Discover Music</h1>
+            <h1 className="text-4xl font-bold text-white mb-8 home-title">
+              Discover Music
+            </h1>
 
             <button
               className={`find-button ${isRecording ? "listening" : ""}`}
@@ -152,19 +154,25 @@ function App() {
           </div>
         ) : (
           <div className="result-container">
-            <img
-              src={result.image}
-              alt="Cover"
-              className="album-image"
-            />
+            <div className="cover-container mt-9">
+              <img src={result.image} alt="Cover" className="album-image" />
+            </div>
             <h2 className="song-title">{result.title}</h2>
             <p className="song-artist">{result.artist}</p>
-            
-            <div 
-              className="search-text-container"
-              onClick={handleSearchAgain}
-            >
-              <span className="search-text">Şarkı Ara</span>
+
+            {result.link && (
+              <a
+                href={result.link}
+                target="_blank"
+                rel="noreferrer"
+                className="spotify-button"
+              >
+                Open in Spotify
+              </a>
+            )}
+
+            <div className="search-text-container" onClick={handleSearchAgain}>
+              <span className="search-text">Search Again</span>
             </div>
           </div>
         )}
