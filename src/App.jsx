@@ -77,7 +77,7 @@ function App() {
     formData.append("return", "spotify,apple_music");
 
     try {
-      // URL-dən test linkini sildik, təmiz API ünvanına müraciət edirik
+      // API ünvanına müraciət edirik
       const response = await fetch("https://api.audd.io/", {
         method: "POST",
         body: formData,
